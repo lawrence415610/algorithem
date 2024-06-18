@@ -27,6 +27,11 @@ public class MyLinkedList<E> {
         Node<E> temp = tail.prev;
         temp.next = x;
         x.prev = temp;
+
+        x.next = tail;
+        tail.prev = x;
+
+        size++;
     }
 
 }
