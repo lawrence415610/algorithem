@@ -20,16 +20,70 @@ class ListNode {
     }
 }
 class LinkedList {
-    constructor(head = null) {
-        this._head = head;
+    constructor() {
+        this._head = null;
+        this._tail = null;
+        this._size = 0;
     }
     get head() {
         return this._head;
     }
-    addToHead(value) {
-        const currentHead = this.head;
-        const newHead = new ListNode(value, currentHead);
-        this._head = newHead;
+    get tail() {
+        return this._tail;
+    }
+    get size() {
+        return this._size;
+    }
+    prepend(value) {
+        const newNode = new ListNode(value, this.head);
+        this._head = newNode;
+        if (!this._tail) {
+            this._tail = newNode;
+        }
+        this._size++;
+        return this;
+    }
+    append(value) {
+        const newNode = new ListNode(value);
+        if (!this._head) {
+            this._head = newNode;
+            this._tail = newNode;
+            return this;
+        }
+        this._tail.next = newNode;
+        this._tail = newNode;
+        this._size++;
+        return this;
+    }
+    insert(value, index) {
+        if (index < 0)
+            throw new Error("index must be positive");
+        if (index > this.size)
+            throw new Error("out of range");
+        if (index === 0) {
+            this.prepend(value);
+        }
+        const newNode = new ListNode(value);
+        let currentNode = this._head;
+        let count = 1;
+        while (currentNode) {
+            if (count === index)
+                break;
+            currentNode = currentNode.next;
+            count++;
+        }
+        const currentNextNode = currentNode.next;
+        currentNode.next = newNode;
+        newNode.next = currentNextNode;
+        this._size++;
+        return this;
+    }
+    printAll() {
+        let head = this._head;
+        while (head) {
+            console.log(head.value);
+            head = head.next;
+        }
     }
 }
 exports.LinkedList = LinkedList;
