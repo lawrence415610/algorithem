@@ -61,7 +61,7 @@ export class LinkedList<T> implements ILinkedList<T> {
     if (!this._tail) {
       this._tail = newNode;
     }
-    this._size++;
+    ++this._size;
     return this;
   }
 
@@ -70,11 +70,12 @@ export class LinkedList<T> implements ILinkedList<T> {
     if (!this._head) {
       this._head = newNode;
       this._tail = newNode;
+      ++this._size;
       return this;
     }
     this._tail!.next = newNode;
     this._tail = newNode;
-    this._size++;
+    ++this._size;
     return this;
   }
 
@@ -95,7 +96,7 @@ export class LinkedList<T> implements ILinkedList<T> {
     const currentNextNode = currentNode!.next;
     currentNode!.next = newNode;
     newNode.next = currentNextNode;
-    this._size++;
+    ++this._size;
 
     return this;
   }

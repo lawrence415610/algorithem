@@ -41,6 +41,11 @@ describe("Test Linked List", () => {
         numberLinkedList.append(0).append(1).append(2).append(3).append(4);
         chai_1.assert.throws(() => {
             numberLinkedList.insert(10, 10);
-        }, " s out of range");
+        }, "out of range");
+    });
+    it("can get the linkedlist size", () => {
+        const numberLinkedList = new LinkedList_1.LinkedList();
+        numberLinkedList.append(0).append(1).append(2).append(3).append(4);
+        chai_1.assert.equal(numberLinkedList.size, 5);
     });
 });
