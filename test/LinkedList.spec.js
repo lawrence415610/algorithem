@@ -48,4 +48,15 @@ describe("Test Linked List", () => {
         numberLinkedList.append(0).append(1).append(2).append(3).append(4);
         chai_1.assert.equal(numberLinkedList.size, 5);
     });
+    it("can delete head of the linkedlist", () => {
+        const numberLinkedList = new LinkedList_1.LinkedList();
+        numberLinkedList
+            .append(0)
+            .append(1)
+            .append(2)
+            .append(3)
+            .append(4)
+            .deleteHead();
+        chai_1.assert.equal(numberLinkedList.head.value, 1);
+    });
 });

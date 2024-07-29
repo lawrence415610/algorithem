@@ -3,6 +3,7 @@ interface ILinkedList<T> {
   prepend: (value: T) => this;
   append: (value: T) => this;
   insert: (value: T, index: number) => this;
+  deleteHead: () => this;
   printAll: () => void;
 }
 
@@ -73,9 +74,29 @@ export class LinkedList<T> implements ILinkedList<T> {
       ++this._size;
       return this;
     }
+
     this._tail!.next = newNode;
     this._tail = newNode;
     ++this._size;
+    return this;
+  }
+
+  deleteHead(): this {
+    if (this._head === null) {
+      this._tail = null;
+      this._size = 0;
+      return this;
+    }
+
+    if (this._head.next) {
+      this._head = this._head.next;
+      this._size--;
+    } else {
+      this._head = null;
+      this._tail = null;
+      this._size = 0;
+    }
+
     return this;
   }
 

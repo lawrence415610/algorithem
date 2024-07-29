@@ -56,6 +56,23 @@ class LinkedList {
         ++this._size;
         return this;
     }
+    deleteHead() {
+        if (this._head === null) {
+            this._tail = null;
+            this._size = 0;
+            return this;
+        }
+        if (this._head.next) {
+            this._head = this._head.next;
+            this._size--;
+        }
+        else {
+            this._head = null;
+            this._tail = null;
+            this._size = 0;
+        }
+        return this;
+    }
     insert(value, index) {
         if (index < 0)
             throw new Error("index must be positive");
