@@ -73,4 +73,17 @@ describe("Test Linked List", () => {
         emptyLinkedList.deleteTail();
         chai_1.assert.isNull(emptyLinkedList.head);
     });
+    it("can delete an element in the linkedlist", () => {
+        var _a, _b;
+        const numberLinkedList = new LinkedList_1.LinkedList();
+        numberLinkedList
+            .append(0)
+            .append(1)
+            .append(2)
+            .append(3)
+            .append(4)
+            .delete(1);
+        numberLinkedList.printAll();
+        chai_1.assert.equal((_b = (_a = numberLinkedList.head) === null || _a === void 0 ? void 0 : _a.next) === null || _b === void 0 ? void 0 : _b.value, 2);
+    });
 });

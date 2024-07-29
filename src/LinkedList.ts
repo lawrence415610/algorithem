@@ -5,6 +5,7 @@ interface ILinkedList<T> {
   insert: (value: T, index: number) => this;
   deleteHead: () => this;
   deleteTail: () => this;
+  delete: (index: number) => this;
   printAll: () => void;
 }
 
@@ -79,6 +80,24 @@ export class LinkedList<T> implements ILinkedList<T> {
     this._tail!.next = newNode;
     this._tail = newNode;
     ++this._size;
+    return this;
+  }
+
+  delete(index: number): this {
+    if (this._head === null) return this;
+    let currentNode = this._head;
+    let count = 1;
+    while (currentNode) {
+      if (count === index) break;
+      if (currentNode.next) {
+        currentNode = currentNode.next;
+        count++;
+      } else {
+        throw new Error("index out of range");
+      }
+    }
+    const currentNextNextNode = currentNode.next?.next;
+    currentNode.next = currentNextNextNode!;
     return this;
   }
 

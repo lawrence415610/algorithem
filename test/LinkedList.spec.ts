@@ -76,4 +76,16 @@ describe("Test Linked List", () => {
     emptyLinkedList.deleteTail();
     assert.isNull(emptyLinkedList.head);
   });
+  it("can delete an element in the linkedlist", () => {
+    const numberLinkedList = new LinkedList();
+    numberLinkedList
+      .append(0)
+      .append(1)
+      .append(2)
+      .append(3)
+      .append(4)
+      .delete(1);
+    numberLinkedList.printAll();
+    assert.equal(numberLinkedList.head?.next?.value, 2);
+  });
 });

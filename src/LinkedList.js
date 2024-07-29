@@ -56,6 +56,27 @@ class LinkedList {
         ++this._size;
         return this;
     }
+    delete(index) {
+        var _a;
+        if (this._head === null)
+            return this;
+        let currentNode = this._head;
+        let count = 1;
+        while (currentNode) {
+            if (count === index)
+                break;
+            if (currentNode.next) {
+                currentNode = currentNode.next;
+                count++;
+            }
+            else {
+                throw new Error("index out of range");
+            }
+        }
+        const currentNextNextNode = (_a = currentNode.next) === null || _a === void 0 ? void 0 : _a.next;
+        currentNode.next = currentNextNextNode;
+        return this;
+    }
     deleteHead() {
         if (this._head === null) {
             this._tail = null;
