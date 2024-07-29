@@ -4,6 +4,7 @@ interface ILinkedList<T> {
   append: (value: T) => this;
   insert: (value: T, index: number) => this;
   deleteHead: () => this;
+  deleteTail: () => this;
   printAll: () => void;
 }
 
@@ -97,6 +98,18 @@ export class LinkedList<T> implements ILinkedList<T> {
       this._size = 0;
     }
 
+    return this;
+  }
+
+  deleteTail(): this {
+    if (this._head === null) return this;
+    let currentNode = this._head;
+    while (currentNode) {
+      if (currentNode!.next!.next === null) break;
+      currentNode = currentNode.next!;
+    }
+    currentNode!.next = null;
+    this._tail = currentNode;
     return this;
   }
 

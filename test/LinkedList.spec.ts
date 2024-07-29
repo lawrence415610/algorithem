@@ -62,4 +62,18 @@ describe("Test Linked List", () => {
       .deleteHead();
     assert.equal(numberLinkedList.head!.value, 1);
   });
+  it("can delete tail of the linkedlist", () => {
+    const numberLinkedList = new LinkedList();
+    numberLinkedList
+      .append(0)
+      .append(1)
+      .append(2)
+      .append(3)
+      .append(4)
+      .deleteTail();
+    assert.equal(numberLinkedList.tail!.value, 3);
+    const emptyLinkedList = new LinkedList();
+    emptyLinkedList.deleteTail();
+    assert.isNull(emptyLinkedList.head);
+  });
 });

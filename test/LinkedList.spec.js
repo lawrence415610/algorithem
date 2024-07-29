@@ -59,4 +59,18 @@ describe("Test Linked List", () => {
             .deleteHead();
         chai_1.assert.equal(numberLinkedList.head.value, 1);
     });
+    it("can delete tail of the linkedlist", () => {
+        const numberLinkedList = new LinkedList_1.LinkedList();
+        numberLinkedList
+            .append(0)
+            .append(1)
+            .append(2)
+            .append(3)
+            .append(4)
+            .deleteTail();
+        chai_1.assert.equal(numberLinkedList.tail.value, 3);
+        const emptyLinkedList = new LinkedList_1.LinkedList();
+        emptyLinkedList.deleteTail();
+        chai_1.assert.isNull(emptyLinkedList.head);
+    });
 });

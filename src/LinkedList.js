@@ -73,6 +73,19 @@ class LinkedList {
         }
         return this;
     }
+    deleteTail() {
+        if (this._head === null)
+            return this;
+        let currentNode = this._head;
+        while (currentNode) {
+            if (currentNode.next.next === null)
+                break;
+            currentNode = currentNode.next;
+        }
+        currentNode.next = null;
+        this._tail = currentNode;
+        return this;
+    }
     insert(value, index) {
         if (index < 0)
             throw new Error("index must be positive");
