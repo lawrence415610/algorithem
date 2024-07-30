@@ -83,7 +83,6 @@ describe("Test Linked List", () => {
             .append(3)
             .append(4)
             .delete(1);
-        numberLinkedList.printAll();
         chai_1.assert.equal((_b = (_a = numberLinkedList.head) === null || _a === void 0 ? void 0 : _a.next) === null || _b === void 0 ? void 0 : _b.value, 2);
     });
 });

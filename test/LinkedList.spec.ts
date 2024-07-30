@@ -85,7 +85,6 @@ describe("Test Linked List", () => {
       .append(3)
       .append(4)
       .delete(1);
-    numberLinkedList.printAll();
     assert.equal(numberLinkedList.head?.next?.value, 2);
   });
 });
