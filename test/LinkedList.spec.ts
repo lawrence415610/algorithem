@@ -87,4 +87,10 @@ describe("Test Linked List", () => {
       .delete(1);
     assert.equal(numberLinkedList.head?.next?.value, 2);
   });
+  it("can find the element", () => {
+    const numberLinkedList = new LinkedList();
+    numberLinkedList.prepend(1).prepend(2).prepend(3).prepend(4);
+    const result = numberLinkedList.find({ value: 1 });
+    assert.equal(result?.value, 1);
+  });
 });

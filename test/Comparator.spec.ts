@@ -32,13 +32,15 @@ describe("Test comparator", () => {
     }
 
     const obj1 = {
-        name: "Lawrence",
-        age: 14
-    }
+      name: "Lawrence",
+      age: 14,
+      hobbies: ["swimming", "kongfu"],
+    };
     const obj2 = {
-        name: "Lawrence",
-        age: 14
-    }
+      name: "Lawrence",
+      age: 14,
+      hobbies: ["swimming", "kongfu"],
+    };
     const compare = new Comparator(deepCompareObject);
     assert.isTrue(compare.equal(obj1, obj2));
   });

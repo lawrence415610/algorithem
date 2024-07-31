@@ -1,4 +1,10 @@
+import Comparator from "./Comparator";
+
 type NullableListNode<T> = ListNode<T> | null;
+type FindOptions<T> = {
+  value?: T;
+  callback?: (value?: T) => boolean;
+};
 interface ILinkedList<T> {
   prepend: (value: T) => this;
   append: (value: T) => this;
@@ -7,6 +13,7 @@ interface ILinkedList<T> {
   deleteTail: () => this;
   delete: (index: number) => this;
   printAll: () => void;
+  find: (options: FindOptions<T>) => NullableListNode<T>;
 }
 
 class ListNode<T> {
@@ -39,11 +46,13 @@ export class LinkedList<T> implements ILinkedList<T> {
   private _head: NullableListNode<T>;
   private _tail: NullableListNode<T>;
   private _size: number;
+  private compare: Comparator<T>;
 
-  constructor() {
+  constructor(compareFunction?: Function) {
     this._head = null;
     this._tail = null;
     this._size = 0;
+    this.compare = new Comparator(compareFunction);
   }
 
   get head(): NullableListNode<T> {
@@ -58,20 +67,25 @@ export class LinkedList<T> implements ILinkedList<T> {
     return this._size;
   }
 
-//   find(
-//     value: T | undefined = undefined,
-//     callback: Function | undefined = undefined
-// ): NullableListNode<T> {
-//     if (!this._head) return null;
-//     let currentNode = this._head;
-//     while (currentNode) {
-//       if (callback && callback(currentNode.value)) {
-//         return currentNode;
-//       }
+  find(options: FindOptions<T>): NullableListNode<T> {
+    if (!this.head) return null;
+    let currentNode = this.head;
+    while (currentNode) {
+      if (options.callback && options.callback(currentNode.value)) {
+        return currentNode;
+      }
 
-//       if(value !== undefined && )
-//     }
-//   }
+      if (
+        options.value !== undefined &&
+        this.compare.equal(currentNode.value, options.value)
+      ) {
+        return currentNode;
+      }
+
+      currentNode != currentNode.next;
+    }
+    return null;
+  }
 
   prepend(value: T): this {
     const newNode = new ListNode(value, this.head);

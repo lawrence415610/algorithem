@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LinkedList = void 0;
+const Comparator_1 = __importDefault(require("./Comparator"));
 class ListNode {
     constructor(value, next = null) {
         this._value = value;
@@ -20,10 +24,11 @@ class ListNode {
     }
 }
 class LinkedList {
-    constructor() {
+    constructor(compareFunction) {
         this._head = null;
         this._tail = null;
         this._size = 0;
+        this.compare = new Comparator_1.default(compareFunction);
     }
     get head() {
         return this._head;
@@ -34,19 +39,22 @@ class LinkedList {
     get size() {
         return this._size;
     }
-    //   find(
-    //     value: T | undefined = undefined,
-    //     callback: Function | undefined = undefined
-    // ): NullableListNode<T> {
-    //     if (!this._head) return null;
-    //     let currentNode = this._head;
-    //     while (currentNode) {
-    //       if (callback && callback(currentNode.value)) {
-    //         return currentNode;
-    //       }
-    //       if(value !== undefined && )
-    //     }
-    //   }
+    find(options) {
+        if (!this.head)
+            return null;
+        let currentNode = this.head;
+        while (currentNode) {
+            if (options.callback && options.callback(currentNode.value)) {
+                return currentNode;
+            }
+            if (options.value !== undefined &&
+                this.compare.equal(currentNode.value, options.value)) {
+                return currentNode;
+            }
+            currentNode != currentNode.next;
+        }
+        return null;
+    }
     prepend(value) {
         const newNode = new ListNode(value, this.head);
         this._head = newNode;
