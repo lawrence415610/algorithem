@@ -10,7 +10,7 @@ class Comparator {
         return a - b < 0 ? -1 : 1;
     }
     equal(a, b) {
-        return this.compare(a, b) === 0;
+        return this.compare(a, b) === 0 || this.compare(a, b);
     }
     lessThan(a, b) {
         return this.compare(a, b) < 0;

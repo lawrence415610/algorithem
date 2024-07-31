@@ -1,4 +1,4 @@
-export default class Comparator {
+export default class Comparator<T> {
   private compare: Function;
 
   constructor(compareFunction: Function = Comparator.defaultCompareFunction) {
@@ -10,8 +10,8 @@ export default class Comparator {
     return a - b < 0 ? -1 : 1;
   }
 
-  public equal(a: number, b: number): boolean {
-    return this.compare(a, b) === 0;
+  public equal(a: T, b: T): boolean {
+    return this.compare(a, b) === 0 || this.compare(a, b);
   }
 
   public lessThan(a: number, b: number): boolean {
