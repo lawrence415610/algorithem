@@ -58,6 +58,21 @@ export class LinkedList<T> implements ILinkedList<T> {
     return this._size;
   }
 
+//   find(
+//     value: T | undefined = undefined,
+//     callback: Function | undefined = undefined
+// ): NullableListNode<T> {
+//     if (!this._head) return null;
+//     let currentNode = this._head;
+//     while (currentNode) {
+//       if (callback && callback(currentNode.value)) {
+//         return currentNode;
+//       }
+
+//       if(value !== undefined && )
+//     }
+//   }
+
   prepend(value: T): this {
     const newNode = new ListNode(value, this.head);
     this._head = newNode;
