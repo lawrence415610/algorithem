@@ -1,4 +1,4 @@
-import Comparator from "./Comparator";
+import Comparator from "../src/Comparator";
 import { assert } from "chai";
 
 describe("Test comparator", () => {
