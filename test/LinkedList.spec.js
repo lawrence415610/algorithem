@@ -88,7 +88,7 @@ describe("Test Linked List", () => {
     it("can find the element", () => {
         const numberLinkedList = new LinkedList_1.LinkedList();
         numberLinkedList.prepend(1).prepend(2).prepend(3).prepend(4);
-        const result = numberLinkedList.find({ value: 1 });
+        const result = numberLinkedList.find(1);
         chai_1.assert.equal(result === null || result === void 0 ? void 0 : result.value, 1);
     });
 });

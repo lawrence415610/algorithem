@@ -1,10 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LinkedList = void 0;
-const Comparator_1 = __importDefault(require("./Comparator"));
 class ListNode {
     constructor(value, next = null) {
         this._value = value;
@@ -28,7 +24,6 @@ class LinkedList {
         this._head = null;
         this._tail = null;
         this._size = 0;
-        this.compare = new Comparator_1.default(compareFunction);
     }
     get head() {
         return this._head;
@@ -39,19 +34,15 @@ class LinkedList {
     get size() {
         return this._size;
     }
-    find(options) {
+    find(value) {
         if (!this.head)
             return null;
         let currentNode = this.head;
         while (currentNode) {
-            if (options.callback && options.callback(currentNode.value)) {
+            if (currentNode.value === value) {
                 return currentNode;
             }
-            if (options.value !== undefined &&
-                this.compare.equal(currentNode.value, options.value)) {
-                return currentNode;
-            }
-            currentNode != currentNode.next;
+            currentNode = currentNode.next;
         }
         return null;
     }
